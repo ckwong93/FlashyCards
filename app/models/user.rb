@@ -5,12 +5,21 @@ class User < ActiveRecord::Base
 
 
   def password
-		@password ||= BCrypt::Password.new(password_hash)
-	end
+  	@password ||= BCrypt::Password.new(password_hash)
+  end
 
-	def password=(new_password)
-		@password = BCrypt::Password.create(new_password)
-		self.password_hash = @password
-	end
+  def password=(new_password)
+  	@password = BCrypt::Password.create(new_password)
+  	self.password_hash = @password
+  end
 
+  def login
+  	@user = User.find_by_email(params[:email])
+  	if @user.password == params[:password]
+  		give_token
+  	else
+  		redirect_to home_url
+  	end
+  end
+  
 end
