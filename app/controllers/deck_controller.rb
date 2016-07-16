@@ -1,5 +1,7 @@
 #display all decks
 get '/decks' do
+	@deck = Deck.all
+	erb :'/decks/index'
 end
 
 #display new decks form
