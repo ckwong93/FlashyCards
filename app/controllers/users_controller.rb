@@ -11,3 +11,6 @@ post '/users/new' do
 	redirect '/'	
 end
 
+get '/users/:id' do
+	erb :'users/show'
+end
