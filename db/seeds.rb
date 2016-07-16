@@ -2,16 +2,16 @@ require 'faker'
 #users
 30.times do
 	User.create(
-    username: Faker::StarWars.character,
-	 email: Faker::Internet.email,
-	 password: '123')
+    username: Faker::Internet.user_name,
+	email: Faker::Internet.email,
+	password_hash: '123')
 end
 
 #Cards + Guesses 
 75.times do
-	wrong_answer1 = Faker::Company.buzzword
-	wrong_answer2 = Faker::Company.buzzword
-	wrong_answer3 = Faker::Company.buzzword
+	wrong_answer1 = Faker::Team.creature
+	wrong_answer2 = Faker::Team.creature
+	wrong_answer3 = Faker::Team.creature
 	guesses = [wrong_answer1, wrong_answer2, wrong_answer3, "answer"].sample
 	
 	#Cards
