@@ -1,0 +1,17 @@
+<h1>Deck: <%= @deck.name %></h1>
+
+<% @card.each do |card| %>
+	<% if @deck.id == card.deck_id%>
+		Questions: <%= card.question %>
+		<ul>
+			<li><%= card.wrong_answer1 %></li>
+			<li><%= card.wrong_answer2 %></li>
+			<li><%= card.wrong_answer3 %></li>
+			<li><%= card.answer %></li>
+		<br>
+		</ul>
+
+
+
+	<% end %>
+<% end %>

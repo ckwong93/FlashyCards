@@ -14,6 +14,9 @@ end
 
 #display flashcard by an id
 get '/decks/:id' do
+	@deck = Deck.find(params[:id])
+	@card = Card.all
+	erb :'/decks/show'
 end
 
 #display a edit flashcard form
