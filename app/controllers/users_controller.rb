@@ -8,7 +8,7 @@ get '/users/new' do
 end	
 
 post '/users/new' do
-	@user = User.create(name: params[:username], email: params[:email], password: params[:password])
+	@user = User.create(username: params[:username], email: params[:email], password_hash: params[:password])
 	redirect '/'	
 end
 
