@@ -7,15 +7,28 @@ require 'faker'
 	 password: '123')
 end
 
-#Cards
+#Cards + Guesses 
 75.times do
+	wrong_answer1 = Faker::Company.buzzword
+	wrong_answer2 = Faker::Company.buzzword
+	wrong_answer3 = Faker::Company.buzzword
+	guesses = [wrong_answer1, wrong_answer2, wrong_answer3, "answer"].sample
+	
+	#Cards
 	Card.create(
 		question: Faker::Team.name,
-		wrong_answer1: Faker::Company.buzzword,
-		wrong_answer2: Faker::Company.buzzword,
-		wrong_answer3:  Faker::Company.buzzword,
+		wrong_answer1: wrong_answer1,
+		wrong_answer2: wrong_answer2,
+		wrong_answer3: wrong_answer3,
 		answer: 'answer',
 		deck_id: rand(1..25))
+
+	#Guesses
+	Guess.create(
+		card_id: rand(1..75),
+		round_id: rand(1..10),
+		user_id: rand(1..25),
+		guess: guesses ) 
 end
 
 #Rounds
@@ -27,13 +40,7 @@ end
 		deck_id: rand(1..25))
 end
 
-#Guesses
-10.times do
-	Guess.create(
-		card_id: rand(1..75),
-		round_id: rand(1..10),
-		user_id: rand(1..25))
-end
+
 
 #Decks
 25.times do
