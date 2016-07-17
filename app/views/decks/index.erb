@@ -4,9 +4,7 @@
 		<center>
 	<% @deck.each do |deck|%>
 	<div class="col-md-4">
-		<% if deck.id  == 1 %>
-			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a>
-		<% end %>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a><br><br>
 	</div>
 	<% end %>
 	</center>
@@ -18,9 +16,9 @@
 	<% @deck.each do |deck|%>
 	<div class="col-md-4">
 		<% if deck.id == 1%>
-			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a><br><br>
 		<% else %>
-			<a href="/decks/<%= deck.id %>" class="btn btn-primary disabled" role="button"><%= deck.name %></a>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary disabled" role="button"><%= deck.name %></a><br><br>
 		<% end %>
 	</div>
 	<% end %>

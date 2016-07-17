@@ -12,5 +12,7 @@ post '/users/new' do
 end
 
 get '/users/:id' do
+
+	@round = Round.last
 	erb :'users/show'
 end

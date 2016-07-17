@@ -9,7 +9,7 @@ post '/sessions/new' do
 
   if @user && @user.password == params["password"]
     session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    redirect "/decks"
 
   else
     @error = "Couldn't log in"

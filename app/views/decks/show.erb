@@ -1,17 +1,22 @@
 <h1>Deck: <%= @deck.name %></h1>
 
-<% @card.each do |card| %>
-	<% if @deck.id == card.deck_id%>
-		Questions: <%= card.question %>
-		<ul>
-			<li><%= card.wrong_answer1 %></li>
-			<li><%= card.wrong_answer2 %></li>
-			<li><%= card.wrong_answer3 %></li>
-			<li><%= card.answer %></li>
-		<br>
-		</ul>
-
-
-
+<form action="/decks/<%= @deck.id %>/guesses" method="post">
+	<% @card.each do |card| %>
+		<% if @deck.id == card.deck_id%>
+		
+		<% arr = [card.wrong_answer1, card.wrong_answer2, card.wrong_answer3, card.answer] %>
+		<% arr.shuffle %>
+		
+		
+		Question: <%= card.question %><br>
+			<input type="radio" name="deck/<%= card.id %>" value=<%= arr[0] %>> <%= arr[0] %><br>
+			<input type="radio" name="deck[<%= card.id %>]" value=<%= arr[1] %>> <%= arr[1] %><br>
+			<input type="radio" name="deck[<%= card.id %>]" value=<%= arr[2] %>> <%= arr[2] %><br>
+			<input type="radio" name="deck[<%= card.id %>]" value=<%= arr[3] %>> <%= arr[3] %><br>
+		
+		<p></p>
+		
+		<% end %>
 	<% end %>
-<% end %>
+	<input type="submit">
+</form>
