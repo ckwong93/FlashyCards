@@ -1,0 +1,29 @@
+<center><h1>Welcome to flashycard</h1></center>
+<% if current_user %>
+	<div class="row">
+		<center>
+	<% @deck.each do |deck|%>
+	<div class="col-md-4">
+		<% if deck.id  == 1 %>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a>
+		<% end %>
+	</div>
+	<% end %>
+	</center>
+<% else %>
+<center>
+	<h4>You must sign in to play more decks</h4></center>
+	<div class="row">
+		<center>
+	<% @deck.each do |deck|%>
+	<div class="col-md-4">
+		<% if deck.id == 1%>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary active" role="button"><%= deck.name %></a>
+		<% else %>
+			<a href="/decks/<%= deck.id %>" class="btn btn-primary disabled" role="button"><%= deck.name %></a>
+		<% end %>
+	</div>
+	<% end %>
+	</center>
+	
+<% end %>
