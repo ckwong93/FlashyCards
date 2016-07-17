@@ -1,5 +1,4 @@
 get '/' do
-	"hello world"
     erb :index
 end
 
@@ -8,7 +7,10 @@ get '/users/new' do
 end	
 
 post '/users/new' do
-	@user = User.create(username: params[:username], email: params[:email], password_hash: params[:password])
+	@user = User.create(username: params[:username], email: params[:email], password: params[:password])
 	redirect '/'	
 end
 
+get '/users/:id' do
+	erb :'users/show'
+end
